@@ -1,0 +1,220 @@
+---- config
+title: Stackato - Bringing the Cloud Back Home
+indent: 5
+auto_size: 1
+
+---- center
+Stackato - Bringing the Cloud Back Home
+
+Ingy döt Net
+
+YAPC North America
+
+Weds, Jun 13 2012, 14:30
+
+----
+== ActiveState
+
+* Open Source for Enterprise since 1997
+  * Perl on Windows
+* MO is Package Quality Open Source for Enterprise Use
+  * Ease of Use, Documentation, Core Enhancements, Support
+* Primary products are:
+  * ActivePerl, ActivePython, ActiveTcl, Komodo IDE
+  * Bottled Water - Perl, Python, Tcl, Mozilla
+* Stackato - Enterprise Private PaaS
+  * Cloud Foundry + AS MO
+  * Started last year, Released Feb 29, 2012
+
+----
+== What is PaaS?
+
+* Platform as a Service
+* Abstract platform for running apps
+* Simply `push` your code and it runs
+* Often on top of IaaS - EC2, HPCS, OpenStack
+* Heroku, dotCloud - Public PaaS
+* Stackato - Private PaaS
+
+----
+== Simple Demo
+
+* git clone https://github.com/Stackato-Apps/multisweeper.git
+* cd multisweeper
+* stackato target api.stacka.to
+* stackato login ingy@activestate.com
+* stackato push yapcsweeper
+
+----
+== Why Private PaaS Matters
+
+* Keep the Internet decentralized
+* "The Cloud" is a very ill/un-defined concept
+  * Ease of use - Good
+  * Giving up control - Bad
+* Evolution vs Revolution
+
+* Private PaaS == Ingy's Passion
+
+    Stackato is the Anti-Cloud!
+
+----
+== Stackato Highlights Overview
+
++* Agnostic - Runs on vSphere/EC2/OpenStack/KVM/Xen/HPCS
++* Scalable - Laptop/MicroCloud to Enterprise/Cluster
++* Relocatable - Export/Import
++* Acmeist - Ruby/Python/Perl/PHP/Node/Java/Scala/Clojure
++* Extendable - Language buildpacks
++* OpenCore - Highly polished VMware CloudFoundry fork
++* Featureful - Heroku in a Box
++* Multitenant - Admins/Users/Groups - IT/Dev/Team
++* Secure - LXC contained apps, https everywhere
++* Controllable - Admin sets hard limits on usage
++* API Controlled - Cloud Controller w/ RestAPI
++* Multi-client - Web Console, CLI Client, IDE
++* Real World - Login and hack
++* Released! - 1.0/29Feb2012 1.2/01May2012
+
+----
+== But What *is* Stackato?
+
+* Stackato is a 1.2GB VM
+* Contains
+  * Operating System
+  * Web Servers
+  * Languages
+  * Services (Databases)
+* Ready to run on almost any hypervisor
+* Single Node or Cluster
+
+----
+== Whence Stackato?
+
+* Stackato idea began in early 2011
+* Forked Cloud Foundry in April 2011
+* Added Perl and Python support May 2011
+* Bought Phenona June 2011
+* Ingy joined in July 2011 (@ YAPC!)
+* 1.0 released in February 2012
+* Is miles ahead of Cloud Foundry now
+* 1.2 Released and Ready for Production
+
+----
+== Stackato Basic Archtecture
+
+       .----------.                  .-----------.
+       | VM Admin |                  | App Users |
+       | Client   |<---------------->|           |
+       '----------'          |       '-----------'
+   .-------------------------|-----------------------.
+   |                         v                       |
+   | .------------.      .-------.       .--------.  |
+   | |   Cloud    |      | nginx |       | Router |  |
+   | | Controller |<-----|       |------>|        || |
+   | '------------'      '-------'       '--------'| |
+   |        |                                      | |
+   |        v                                      | |
+   | .------------------------------------------.  | |
+   | | NATS Bus                                 |  | |
+   | '------------------------------------------'  | |
+   |      |          |        |                    | |
+   |      v          v        v                    | |
+   | .---------..--------..------..------..-------.| |
+   | | Health  || Stager || DEA1 || DEA2 || DEA-n <' |
+   | | Manager |'--------''------''------''-------'  |
+   | '---------'            | Services |             |
+   '-------------------------------------------------'
+
+----
+== MicroCloud
+
+* Stackato runs whereever you want it
+* Even on your laptop
+  * VirtualBox
+  * VMware - VMplayer/Fusion
+* "MicroCloud" is ActiveState's Free License
+  * Free of charge for single node usage
+* Show local MicroCloud
+
+----
+== One line MicroCloud install!
+
+      curl get.stackato.com/microcloud | bash
+
+* Don't run this here!
+  * See me for a usb copy
+  * Come to Stackato Workshop on Friday
+
++* stackato.com is a Stackato VM
+* get is a Stackato app :)
+
+----
+== Stackato Management Console
+
+* The `stackato` client uses a REST API to the CC
+  * stackato <cmd> -t
+* So does the Stackato Management Console
+  * Pure JavaScript app to control your stackato
+
+    SMC Demo
+
+----
+== Stackato App Store
+
+* One click install of popular apps
+* Not really a "store" . No $$$ required
+* Really simple design: JSON and Git Repos
+* Make your own store with a gist
+
+    Store creation demo
+
+----
+== Security
+
+* LXC Containers
+  * Every app runs in it's own container
+  * Can't affect the host system
+  * Hard limits on resources
+  * Kernel level
+
+    > ssh stackato@your-vm
+    > stackato ssh your-running-app
+
+----
+== Smallest Federated Wiki
+
+* Ward Cunningham invented the Wiki in 1995
+* Now he has a new wiki project on github
+* /join #fedwiki on freenode
+
+    fedwiki demo
+
+----
+== PairUp!™
+
+* Ingy's new app that does nothing
+* LXC + User Groups == instant pair programming
+* Find people on irc and program with them
+
+    PairUp! demo
+
+----
+== Conclusion
+
+* (Something like) Stackato is the Future
+* Stackato is ready now
+  (Welcome to the future)
+* Ingy wants to PairUp! with you!
+  * Any bug in ingyware, let's fix it together
+  * Find me on irc
+
+* Please come to:
+
+    Stackato Workshop with Jan and Ingy
+    Friday @ 1:30pm
+
+---- center
+The End
+
+Any Questions?
